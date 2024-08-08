@@ -1,5 +1,9 @@
 # Fraktal - Laser Fault Injection (LFI) RIG
 
+This project is Fraktal's take in building an affordable Laser Fault Injection that allows anyone to get started with performing laser fault injection attacks, previously left only for laboratories and research institutes with expensive equipment. With this breakthrough, we hope to inspire a new wave of research and development in hardware security.
+
+The series of blog posts related to this repository can be read from [Fraktal Blog](https://blog.fraktal.fi)
+
 **This page is under active update and will be updated multiple times over the coming weeks**
 
 ## Contents of the repository
