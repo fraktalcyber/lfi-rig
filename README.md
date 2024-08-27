@@ -2,17 +2,19 @@
 
 This project is Fraktal's take on building an affordable Laser Fault Injection rig that allows anyone to get started with performing laser fault injection attacks, previously left only for laboratories and research institutes with expensive equipment. With this breakthrough, we hope to inspire a new wave of research and development in hardware security.
 
-The series of blog posts related to this repository can be read from [Fraktal's blog](https://blog.fraktal.fi/laser-fault-injection-for-the-masses-1860afde5a26).
+The series of blog posts related to this repository can be read from our blog
+[Part 1](https://blog.fraktal.fi/laser-fault-injection-for-the-masses-1860afde5a26),
+[Part 2](https://medium.com/fraktal/laser-fault-injection-for-the-masses-part-2-b86a42fd28a1), Part 3 - To be released
 
 **This page is under active update and will be updated multiple times over the coming weeks**
 
 ## Contents of the repository
 
 - **Decapping** - Instructions, guidance and methodologies for decapping chips **TO BE RELEASED IN THE NEXT BLOG POST**
-- **LFI** - Instructions, guidance and methodologies for Laser Fault Injection and how to get the best out of the rig **TO BE RELEASED IN THE NEXT BLOG POST**
-- **Other** - Various other things and source material we have created and come across **TO BE UPDATED**
+- **LFI** - Instructions, guidance and methodologies for Laser Fault Injection and how to get the best out of the rig
+- **Other** - Various other things and source material we have created and come across
 - **PCB** - KiCAD project, schematic and board files for the XY2-100 driver board
-- **src** - Micropython script including the XY2-100 software driver and control for the laser PWM
+- **src** - Micropython script including the XY2-100 software driver and control for the laser PWM, beam pattern visualizer
 
 
 ## WARNING
