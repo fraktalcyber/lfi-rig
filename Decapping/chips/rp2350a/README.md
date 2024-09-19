@@ -9,3 +9,5 @@ The die pad is the same as the large ground pad on the bottom of the chip. Use a
 The bottom of the chip is pretty robust. There shouldn't be any issues for the chips functionality even if your knife slips a bit and cuts some of the epoxy. 
 
 Shouldn't take more than few minutes to peel the pad off.
+
+![RP2350A](die-pad.jpg)
