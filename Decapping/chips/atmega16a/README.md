@@ -13,3 +13,5 @@ Cut at least two of the corners of the die pad by pressing them with an edge of 
 If the die pad doesn't lift off, make one more pass with the laser.
 
 There is plenty of material on the underside of the chip so even if you are a bit careless with the laser you should have any issues hitting anything critical like the bond wires.
+
+![ATmega16A](die-pad-outline.jpg)
