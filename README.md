@@ -29,6 +29,12 @@ It is imperative to wear laser safety goggles that filter out 1064nm light and t
 
 When buying goggles, get them from reputable sources that provide some certification or other documentation so you can be sure the glasses actually filter the wavelengths. [Example from Farnell](https://fi.farnell.com/imatronic/1900-08-000/laser-safety-glasses-870-1085nm/dp/2334333)
 
+**If you decide to decap chips with the rig here are some additional warnings.**
+
+Ensure you have adequate fume extraction as the fumes emitted from the burning epoxy, fillers and additives in the coating can be very toxic to inhale. We are performing this in a sealed enclosure with Weller fume extractor that has active carbon filter. 
+
+Fire hazards, as you are giving laser treatment for the epoxy, even though it has flame retardants, there is still a risk of combustion. Never leave the rig without supervision when doing this and have fire extinguisher at hand just in case.
+
 ## Shopping list
 
 This details the main components needed to build the rig. The bill of materials for the XY2-100 driver board is listed in the README.md under the PCB folder.
