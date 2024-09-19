@@ -4,18 +4,22 @@ This project is Fraktal's take on building an affordable Laser Fault Injection r
 
 The series of blog posts related to this repository can be read from our blog
 [Part 1](https://blog.fraktal.fi/laser-fault-injection-for-the-masses-1860afde5a26),
-[Part 2](https://medium.com/fraktal/laser-fault-injection-for-the-masses-part-2-b86a42fd28a1), Part 3 - To be released
-
-**This page is under active update and will be updated multiple times over the coming weeks**
+[Part 2](https://medium.com/fraktal/laser-fault-injection-for-the-masses-part-2-b86a42fd28a1), 
+[Part 3](https://medium.com/fraktal/laser-fault-injection-for-the-masses-part-3-86372a233db9)
 
 ## Contents of the repository
 
-- **Decapping** - Instructions, guidance and methodologies for decapping chips **TO BE RELEASED IN THE NEXT BLOG POST**
+- **Decapping** - Instructions, guidance and methodologies for decapping chips
 - **LFI** - Instructions, guidance and methodologies for Laser Fault Injection and how to get the best out of the rig
 - **Other** - Various other things and source material we have created and come across
 - **PCB** - KiCAD project, schematic and board files for the XY2-100 driver board
 - **src** - Micropython script including the XY2-100 software driver and control for the laser PWM, beam pattern visualizer
 
+
+## BREAKING NEWS!
+**The rig is capable of decapping chips!** This capability drastically simplifies the decapping process, as you can decap and then immediately move on to glitching the chip — no need to switch between different equipment or complicated setups. Read more from [decapping](https://github.com/fraktalcyber/lfi-rig/blob/main/Decapping/README.md)
+
+![Laser Decap](/Other/Images/laser-decap-process.png)
 
 ## WARNING
 
