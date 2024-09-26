@@ -17,6 +17,7 @@ If the xTool marketing is to trust this device is Fastest Portable Laser Engrave
 - Laser safe (at least supposedly) enclosure
 
 We pitted the xTool F1 against our rig v1 and here are the main differences:
+
 **lfi-rig v1 vs xTool F1**
 - **Price:** 500eur vs 1449eur
 - **Laser Decapping accuracy with IR laser:** Very similar provided you have the focus nailed for v1. xTool makes the focus setting and repeatability much better.
