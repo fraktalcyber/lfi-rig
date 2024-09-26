@@ -18,19 +18,19 @@ If the xTool marketing is to trust this device is Fastest Portable Laser Engrave
 
 We pitted the xTool F1 against our rig v1 and here are the main differences:
 **lfi-rig v1 vs xTool F1**
-- Price: 500eur vs 1449eur
-- Laser Decapping accuracy with IR laser: Very similar provided you have the focus nailed for v1. xTool makes the focus setting and repeatability much better.
-- Laser fault injection accuracy: Very similar provided you have the focus nailed for v1. Again, xTool makes this much easier to get right.
-- Speed: xTool is much faster. Hard to give absolute figures but 10x is probably not far off.
-- Ease of use and setup: xTool requires absolutely nothing special, just install the drivers and you are good to go. You can use anything from curl to our Python scripts to use it. You are up and running in less than 5 minutes
-- HW hacking scene credibility points: v1 no questions asked. xTool is like turning up into a tuning car meetup in a grey VW Golf.
+- **Price:** 500eur vs 1449eur
+- **Laser Decapping accuracy with IR laser:** Very similar provided you have the focus nailed for v1. xTool makes the focus setting and repeatability much better.
+- **Laser fault injection accuracy:** Very similar provided you have the focus nailed for v1. Again, xTool makes this much easier to get right.
+- **Speed:** xTool is much faster. Hard to give absolute figures but 10x is probably not far off.
+- **Ease of use and setup:** xTool requires absolutely nothing special, just install the drivers and you are good to go. You can use anything from curl to our Python scripts to use it. You are up and running in less than 5 minutes
+- **HW hacking scene credibility points:** v1 no questions asked. xTool is like turning up into a tuning car meetup in a grey VW Golf.
 
 ## The setup
 xTool F1 has few ways of connecting to it, you can use the USB-C port on the side of the device, or Wi-Fi. In either case the device can be reached via HTTP API on port 8080. If using USB-C you will need to install the xTool USB-Ethernet driver (generic CH340 drivers might work too), after which the device is presented as USB-Ethernet interface on the host computer. xTool [support website](https://support.xtool.com/product/2) has all the necessary details. It is good idea to do a smoke test, pun intended, with the official software just to verify the device works as intended. As the setup process has a fair amount of parameters it is suggested that you do perform the initial machine setup using the XCS desktop or mobile application. This also verifies the device is running the most recent firmware version.
 
 
 ## Talking to xTool F1
-To control the device there are five main commands you will need. Before you get started, verify the device responds. The easiest way to do this is via browser. Over plain HTTP, access this URL: ip:8080/system?action=version_v2 This should give you a JSON-formatted output showing various machine related information. If this works, you are good for the next steps.
+To control the device there are four main commands you will need. Before you get started, verify the device responds. The easiest way to do this is via browser. Over plain HTTP, access this URL: ip:8080/system?action=version_v2 This should give you a JSON-formatted output showing various machine related information. If this works, you are good for the next steps.
 
 **The main commands**
 - Focus control POST-request: ip:8080/focus/control - This adjust the Z-axis and the focus point of the laser
