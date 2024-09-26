@@ -13,10 +13,16 @@ The series of blog posts related to this repository can be read from our blog
 - **LFI** - Instructions, guidance and methodologies for Laser Fault Injection and how to get the best out of the rig
 - **Other** - Various other things and source material we have created and come across
 - **PCB** - KiCAD project, schematic and board files for the XY2-100 driver board
+- **rigv2** - 2nd generation rig using off-the-shelf xTool F1 laser engraver
 - **src** - Micropython script including the XY2-100 software driver and control for the laser PWM, beam pattern visualizer
 
+## UPDATE
+Rigv2 using off-the-shelf xTool F1 laser engraver. A bit more money but a lot less hassle. Read the details from [rigv2](/rigv2/README.md)
 
-## BREAKING NEWS!
+<img src="https://github.com/fraktalcyber/lfi-rig/blob/main/Other/Images/xtool-f1.png?raw=true" width="265" height="387">
+
+
+## Chip Decapping
 **The rig is capable of decapping chips!** This capability drastically simplifies the decapping process, as you can decap and then immediately move on to glitching the chip — no need to switch between different equipment or complicated setups. Read more from [decapping](https://github.com/fraktalcyber/lfi-rig/blob/main/Decapping/README.md)
 
 ![Laser Decap](/Other/Images/laser-decap-process.png)
