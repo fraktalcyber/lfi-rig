@@ -34,10 +34,10 @@ xTool F1 has few ways of connecting to it, you can use the USB-C port on the sid
 To control the device there are four main commands you will need. Before you get started, verify the device responds. The easiest way to do this is via browser. Over plain HTTP, access this URL: ip:8080/system?action=version_v2 This should give you a JSON-formatted output showing various machine related information. If this works, you are good for the next steps.
 
 **The main commands**
-- Focus control POST-request: ip:8080/focus/control - This adjust the Z-axis and the focus point of the laser
-- Framing POST-request: ip:8080/processing/upload?gcodeType=frame&fileType=txt&autoStart=1&loopPrint=1 - This will run the device in framing mode scanning whatever G-Code you give it. This will only end with the Stop command
-- Lasering POST-request: ip:8080/processing/upload?gcodeType=processing&fileType=txt&taskId=1234 - This will run the device in lasering mode
-- Stop POST-request: ip:8080/processing/stop - This command will stop whatever the device is doing, whether framing or lasering
+- **Focus control POST-request:** *ip:8080/focus/control* - This adjust the Z-axis and the focus point of the laser
+- **Framing POST-request:** *ip:8080/processing/upload?gcodeType=frame&fileType=txt&autoStart=1&loopPrint=1* - This will run the device in framing mode scanning whatever G-Code you give it. This will only end with the Stop command
+- **Lasering POST-request:** *ip:8080/processing/upload?gcodeType=processing&fileType=txt&taskId=1234* - This will run the device in lasering mode
+- **Stop POST-request:** *ip:8080/processing/stop* - This command will stop whatever the device is doing, whether framing or lasering
 
 
 ## Autohoming or auto calibration
