@@ -23,7 +23,7 @@ We pitted the xTool F1 against our rig v1 and here are the main differences:
 - **Laser Decapping accuracy with IR laser:** Very similar provided you have the focus nailed for v1. xTool makes the focus setting and repeatability much better.
 - **Laser fault injection accuracy:** Very similar provided you have the focus nailed for v1. Again, xTool makes this much easier to get right.
 - **Speed:** xTool is much faster. Hard to give absolute figures but 10x is probably not far off.
-- **Ease of use and setup:** xTool requires absolutely nothing special, just install the drivers and you are good to go. You can use anything from curl to our Python scripts to use it. You are up and running in less than 5 minutes
+- **Ease of use and setup:** xTool requires absolutely nothing special, just install the drivers and you are good to go. You can use anything from curl to our Python scripts *(WIP)* to use it. You are up and running in less than 5 minutes
 - **HW hacking scene credibility points:** v1 no questions asked. xTool is like turning up into a tuning car meetup in a grey VW Golf.
 
 ## The setup
