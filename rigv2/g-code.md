@@ -67,8 +67,9 @@ The G-Code files sent to the device always end with the following G-Code command
 - F, Feedrate (movement speed). Calculated with the formula (speed in mm/s)*60 = feedrate e.g. 160mm/s => 160mm/s*60 = 9600
 
 **Special cases**
-G0 F180000 - ?? Setting of the maximum feedrate? As this is only used in the init section
-G0 X0 Y0 - Position the galvanometer to its zero point
+
+- G0 F180000 - ?? Setting of the maximum feedrate? As this is only used in the init section
+- G0 X0 Y0 - Position the galvanometer to its zero point
 
 
 ### G1 - Linear move, laser on
@@ -83,7 +84,8 @@ G0 X0 Y0 - Position the galvanometer to its zero point
 The first G1 command should always be used to set the feedrate. This can be done either by issuing a separate G1 command (see below). Or by setting it as part of the first G1 command such as G1X55.00Y55.00S800F6000 (Move the galvanometer head to point X55 Y55, turn the power to 80% and set the feedrate to 100mm/s.
 
 **Special cases**
-G1FnnnnnSnnnn - Set the feedrate for the laser on move commands, S-parameter should be set to 0 in this command
+
+- G1FnnnnnSnnnn - Set the feedrate for the laser on move commands, S-parameter should be set to 0 in this command
 
 
 ### G21 - Select Blue (455nm) laser
