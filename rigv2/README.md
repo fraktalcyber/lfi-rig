@@ -76,20 +76,20 @@ Notes on the URL parameters. If you want the framing to start only when you pres
 xTool seems to use slightly varied [Marlin G-Code](https://marlinfw.org/meta/gcode/) for controlling the device. The G-Code files in framing mode that are sent to the device should be structured as follows. More details regarding the xTool G-Code structure can be found under the [g-code.md](/rigv2/g-code.md)
 
 ```
-G0 F180000
-M4 S0
-G1 F180000
-M114 S1
-G21
-G90
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+M4 S0         - Laser power on, power level to 0
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+M114 S1       - ?? Get current position or some kind of framing related setup parameter
+G21           - Select which laser to use, G21 = blue, G22 = IR
+G90           - Set absolute positioning
 
 -- add here your actual G-Code coordinates --
 
-G90
-G0 S0
-G0 F180000
-G1 F180000
-M6 P1
+G90           - Set absolute positioning
+G0 S0         - Laser power to 0 ??
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+M6 P1         - Stop lasering process, clean-up and power off the galvo and lasers
 ```
 
 ## Laser Processing Mode - This can be used for laser decapping
@@ -102,20 +102,20 @@ Payload: Text format G-Code file with some additions
 
 **Notes on the G-Code for this**
 ```
-G90
-G0 F3000
-G0 F180000
-M4 S0
-G1 F180000
-G0 X0 Y0
-G21
-G90
+G90           - Set absolute positioning
+G0 F3000      - Set feedrate laser off to 50mm/s
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+M4 S0         - Laser power on, power level to 0
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+G0 X0 Y0      - Set galvanometer to 0,0 point
+G21 (or G22)  - Select which laser to use, G21 = blue, G22 = IR
+G90           - Set absolute positioning
 
 -- add here your actual G-Code coordinates --
 
-G90
-G0 S0
-G0 F180000
-G1 F180000
-M6 P1
+G90           - Set absolute positioning
+G0 S0         - Laser power to 0 ??
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+M6 P1         - Stop lasering process, clean-up and power off the galvo and lasers
 ```
