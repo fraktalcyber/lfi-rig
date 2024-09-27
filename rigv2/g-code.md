@@ -1,6 +1,6 @@
-# WORK IN PROGRESS
+# xTool F1 G-Code
 
-We are working to get this published as soon as possible. In the meanwhile here is the high-level summary of the G-Code structure.
+## High-level summary of the G-Code structure.
 
 ```
 G0X55.500Y55.500
@@ -16,7 +16,85 @@ The first G1 command should append to the command additional parameters, namely 
 
 The laser power is given in percentages without decimal point, with the last digit being the decimal. 1000 being equal to 100% and numbers such as 64 being 6.4%
 
-## TODO
-- Figure out how the feedrate number can be turned into mm/s
-- Figure out which G-Code commands and command combinations are responsible for the selection of laser blue or IR
-- Figure out the additional commands and their meaning that are placed in the header and footer of the G-Code file
+## G-Code file header
+
+```
+G90           - Set absolute positioning
+G0 F3000      - Set feedrate laser off to 50mm/s
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+M4 S0         - Laser power on, power level to 0
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+G0 X0 Y0      - Set galvanometer to 0,0 point
+G21 (or G22)  - Select which laser to use, G21 = blue, G22 = IR
+G90           - Set absolute positioning
+```
+
+The G-Code files sent to the device always begin with the following header, which is used to setup the basic parameters for the galvanometer and lasers. Until there is better information, it is better to append this **as it is** to any G-Code files sent to the device. This is to ensure the device works as intended.
+
+## G-Code file end
+
+```
+G90           - Set absolute positioning
+G0 S0         - Laser power to 0 ??
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+M6 P1         - Stop lasering process, clean-up and power off the galvo and lasers
+```
+
+The G-Code files sent to the device always end with the following G-Code commands. Until there is better information, it is better to append this **as it is** to any G-Code files sent to the device. This is to ensure the device works as intended.
+
+## xTool F1 G-Code commands
+
+### G0 - Linear move, laser off
+**Command structure - G0Xnn.nnnYnn.nnnSnnnnFnnnnn**
+
+- X, X-coordinate in millimeters
+- Y, Y-coordinate in millimeters
+- S, laser power decimal number with single decimal, without decimal separator e.g 64 = 6.4 or 800 = 80.0
+- F, Feedrate (movement speed). Calculated with the formula (speed in mm/s)*60 = feedrate e.g. 160mm/s => 160mm/s*60 = 9600
+
+**Special cases**
+G0 F180000 - ?? Setting of the maximum feedrate? As this is only used in the init section
+G0 X0 Y0 - Position the galvanometer to its zero point
+
+
+### G1 - Linear move, laser on
+**Command structure - G0Xnn.nnnYnn.nnnSnnnnFnnnnn**
+
+- X, X-coordinate in millimeters
+- Y, Y-coordinate in millimeters
+- S, laser power decimal number with single decimal, without decimal separator e.g 64 = 6.4 or 800 = 80.0
+- F, Feedrate (movement speed). Calculated with the formula (speed in mm/s)*60 = feedrate e.g. 160mm/s => 160mm/s*60 = 9600
+
+**Important Notes**
+The first G1 command should always be used to set the feedrate. This can be done either by issuing a separate G1 command (see below). Or by setting it as part of the first G1 command such as G1X55.00Y55.00S800F6000 (Move the galvanometer head to point X55 Y55, turn the power to 80% and set the feedrate to 100mm/s.
+
+**Special cases**
+G1FnnnnnSnnnn - Set the feedrate for the laser on move commands, S-parameter should be set to 0 in this command
+
+
+### G21 - Select Blue (455nm) laser
+**Command structure - G21**
+
+No parameters
+
+### G22 - Select IR (1064nm) laser
+**Command structure - G22**
+
+No parameters
+
+### G90 - Set absolute positioning
+**Comand structure - G90**
+
+No parameters
+
+### M4 - Laser power on
+**Command structure - M4 Snnnn**
+
+- S, laser power decimal number with single decimal, without decimal separator e.g 64 = 6.4 or 800 = 80.0. **Suggested setting here 0**
+
+
+### M6 - Stop the lasering process, power off everything
+**Command structure - M6 P1**
+
+- P, ?? Not sure what this means better to just send it as P1 until there is better understanding
