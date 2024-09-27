@@ -18,6 +18,7 @@ The laser power is given in percentages without decimal point, with the last dig
 
 ## G-Code file header
 
+**Header in "processing"-mode**
 ```
 G90           - Set absolute positioning
 G0 F3000      - Set feedrate laser off to 50mm/s
@@ -29,7 +30,19 @@ G21 (or G22)  - Select which laser to use, G21 = blue, G22 = IR
 G90           - Set absolute positioning
 ```
 
-The G-Code files sent to the device always begin with the following header, which is used to setup the basic parameters for the galvanometer and lasers. Until there is better information, it is better to append this **as it is** to any G-Code files sent to the device. This is to ensure the device works as intended.
+**Header in "framing"-mode**
+```
+G0 F180000    - Set feedrate laser off to 3000mm/s (max)
+M4 S0         - Laser power on, power level to 0
+G1 F180000    - Set feedrate laser on to 3000mm/s (max)
+M114 S1       - ?? Get current position or some kind of framing related setup parameter
+G21           - Select which laser to use, G21 = blue, G22 = IR
+G90           - Set absolute positioning
+```
+
+The G-Code files sent to the device always begin with the following header. These are used to setup the basic parameters for the galvanometer and lasers. Until there is better information, it is better to append this **as it is** to any G-Code files sent to the device. This is to ensure the device works as intended.
+
+
 
 ## G-Code file end
 
@@ -98,3 +111,8 @@ No parameters
 **Command structure - M6 P1**
 
 - P, ?? Not sure what this means better to just send it as P1 until there is better understanding
+
+### M114 - Some framing related setup command
+**Command structure - M114 S1**
+
+- S, ?? No clear understanding what this means
