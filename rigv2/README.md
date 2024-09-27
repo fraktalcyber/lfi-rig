@@ -1,7 +1,7 @@
-# Off the shelf Laser Fault Injection rig, lfi-rig v2
+# Off-the-shelf Laser Fault Injection rig, lfi-rig v2
 Don't want to start toying with soldering or getting PCBs manufactured, but have a bit more money to spend. For 1449eur (VAT incl) you can buy a very capable LFI rig that can be used to both decap chips and perform laser fault injection without any hardware modifications. 
 
-**Some warnings:** If talking to the device directly you may permanently break the device by sending incorrect commands or badly formatted G-Code files. As you are directly controlling the device and its laser power, the same precautions apply as with our rig v1. Thoroughly read this write-up as well as the information relating to the G-Code.
+**Some warnings:** You will be talking to the device directly, this may result in permanently breaking the device. This may happen by sending incorrect commands or badly formatted G-Code files. As you are directly controlling the device and its laser power, the same precautions apply as with our rig v1, namely cover your eyes and vent fumes. Thoroughly read this write-up, as well as, the information relating to the G-Code before attempting this.
 
 ![xTool F1, image (c) xTool](/Other/Images/xtool-f1.png)
 
@@ -61,19 +61,19 @@ Payload: {"action":"goTo", "autoHome":1, "z":24.73, "stopFirst":1, "F":300}
 ```
 
 ## Framing Mode- This can be used for LFI
-Framing is using the blue laser on the device with just lower power to show the outline of the shape you want. Now, as we are sending raw G-Code to the device it is possible to accidentally set the laser power high enough to actually start cutting/engraving whatever you have underneath. **So make sure the power is set to max 0.064 (so 6.4%).** This is the default and safe setting used by xTools own XCS studio software.
+Framing is by default using the blue laser on the device with just lower power to show the outline of the shape you want. Now, as we are sending raw G-Code to the device it is possible to accidentally set the laser power high enough to actually start cutting/engraving whatever you have underneath. **So make sure the power is set to max 0.064 (so 6.4%). If you just want to do framing.** This is the default and safe setting used by xTools own XCS studio software.
 
-**As we have complete control over the G-Code, this functionality can be used to run the device in a looping laser fault injection mode.**
+**As we have complete control over the G-Code, this functionality can be used to run the device in a looping laser fault injection mode.** To achieve this change the laser to IR (using G-Code G22) and set the power and feedrate to your liking. The process will continue indefinitely until you run the stop command.
 
 ```
 URL: POST ip:8080/processing/upload?gcodeType=frame&fileType=txt&autoStart=1&loopPrint=1
 Payload: Text format G-Code file with some additions
 ```
 
-Notes on the URL parameters. If you want the framing to start only when you press the rotary button on the side of the device, leave the AutoStart-parameter out. loopPrint-parameter is controlling whether the device will keep on looping the same G-Code file or just run it once. 
+Notes on the URL parameters. If you want the framing to start only when you press the rotary button on the side of the device **(this is a good idea if you use the IR laser)**, leave the autoStart-parameter off. loopPrint-parameter is controlling whether the device will keep on looping the same G-Code file or just run it once. 
 
 **Important notes for the G-Code**:
-xTool seems to use slightly varied [Marlin G-Code](https://marlinfw.org/meta/gcode/) for controlling the device. The G-Code files in framing mode that are sent to the device should be structured as follows. More details regarding the xTool G-Code structure can be found under the [g-code.md](/rigv2/g-code.md)
+xTool seems to use slightly varied [Marlin G-Code](https://marlinfw.org/meta/gcode/) for controlling the device. The G-Code files in framing mode that are sent to the device should be structured as follows. More details regarding the xTool G-Code structure can be found under the [g-code.md](/rigv2/g-code.md) and example G-Code files can be found under the examples folder.
 
 ```
 G0 F180000    - Set feedrate laser off to 3000mm/s (max)
@@ -93,7 +93,7 @@ M6 P1         - Stop lasering process, clean-up and power off the galvo and lase
 ```
 
 ## Laser Processing Mode - This can be used for laser decapping
-This works largely in the same manner as the framing and uses the same HTTP endpoint. It just omits the autoStart and loopPrint parameters to add some safety in that you will need to trigger the process using the button on the side of the device and it only runs the sent G-Code once
+This works largely in the same manner as the framing and uses the same HTTP endpoint. It just omits the autoStart and loopPrint parameters to add some safety in that you will need to trigger the process using the button on the side of the device and it only runs the sent G-Code once. TaskId just seems to be random string of letters and numbers that the device can use to keep track of the task and will use it when returning information on the progress.
 
 ```
 URL: POST ip:8080/processing/upload?gcodeType=processing&fileType=txt&taskId=xxxxx 
